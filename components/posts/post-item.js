@@ -1,6 +1,6 @@
 import classes from "./post-item.module.css";
 import Link from "next/link";
-import Image from "next/Link";
+import Image from "next/image";
 
 function PostItem(props) {
   const { title, image, excerpt, date, slug } = props.post;
@@ -12,13 +12,14 @@ function PostItem(props) {
   });
 
   const imagePath = `/images/posts/${slug}/${image}`;
+  const linkPath = `/posts/${slug}`;
 
   return (
     <li className={classes.post}>
-      <Link>
+      <Link href={linkPath}>
         <a>
           <div className={classes.image}>
-            <Image scr={imagePath} alt={title} width={300} height={200} />
+            <Image src={imagePath} alt={title} width={300} height={200} />
           </div>
           <div className={classes.content}>
             <h3>{title}</h3>
